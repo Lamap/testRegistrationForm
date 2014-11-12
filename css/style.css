@@ -1,0 +1,98 @@
+body {
+    margin: 0px;
+    font-family: Arial;
+    font-size: 13px;
+}
+@font-face {
+	font-family: "sego";
+	src: url("../assets/fonts/segoeuii-webfont.eot"); 
+	src: local('☺'), url("../assets/fonts/segoeuii-webfont.woff") format('woff'), url("../assets/fonts/segoeuii-webfont.ttf") format('truetype'), url("../assets/fonts/segoeuii-webfont.svg") format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+#wrapper {
+	background: #ededed url("../assets/img/background.png") repeat-x;
+	height: 100%;
+	position: absolute;
+	width: 100%;
+}
+#wrapper .header {
+	position: absolute;
+	width: 524px;
+	height: 571px;
+	background: url("../assets/img/logo.png") no-repeat;
+	font-family: "sego";
+	color: #07403d;
+}
+#wrapper .header .title {
+	font-size: 36px;
+	position: absolute;
+	top: 52px;
+	right: 0px;
+}
+#wrapper .header .title .bold {
+	font-weight: bold;
+}
+#wrapper .header .subTitle {
+	font-size: 10px;
+	position: absolute;
+	top: 88px;
+	left: 176px;
+}
+#wrapper .registration {
+	position: absolute;
+	width: 454px;
+	height: 440px;
+	left: 50%;
+	top: 50%;
+	margin-left: -227px;
+	margin-top: -220px;
+	
+	background: #FFF;
+	overflow: hidden;
+	
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	
+	-webkit-box-shadow: 0px 2px 5px 0px #DDD;
+	-moz-box-shadow:    0px 2px 5px 0px #DDD;
+	box-shadow:         0px 2px 5px 0px #DDD;
+}
+
+#wrapper .registration .formHeader {
+	font-family: "sego";
+	font-size: 16px;
+	color: #FFF;
+	background: #02afa6;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 16px;
+
+}
+#wrapper .registration .footer {
+	background: #F6F6F6;
+	height: 74px;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
+.formButton {
+	width: 168px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	font-family: "sego";
+	font-weight: bold;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	color: #FFF;
+	background: #02afa6;
+}
+#wrapper .registration .footer .formButton {
+	margin: 22px auto 0px auto;
+}
+#wrapper .registration .footer .formButton.active {
+	cursor: pointer;
+}

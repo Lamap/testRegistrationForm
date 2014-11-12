@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" rel="stylesheet" media="screen" href="css/style.css">
+    <script type="text/javascript" src="js/libs/jquery-2.1.1.min.js"></script>
+    <script data-main="js/main" src="js/libs/require.js"></script>
+</head>
+<body>
+   <div id="wrapper">
+       <div class="header">
+           <span class="title">University of <span class="bold">Debrecen</span></span>
+           <span class="subTitle">EST. 1538</span>
+       </div>
+       <!-- ko if: modals.register -->
+       <div data-bind="template: {'name': 'RegisterTemplate', 'data': modals.register, 'afterRender':  modals.register.init}"></div> 
+       <!-- /ko -->
+   </div>
+</body>
+</html> 

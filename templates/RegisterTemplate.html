@@ -1,0 +1,52 @@
+<div class="formDiv registration">
+    <div class="formHeader">
+        Register
+    </div>
+    <div class="inputForm">
+        <div class="label">Full name:</div>
+        <input type="text" data-bind="value: inputs.name.value, valueUpdate: 'afterkeydown'"/>
+        <div class="state" data-bind="css:{valid: inputs.name.validState}"></div>
+    </div>
+    <div class="inputForm">
+        <div class="label">Email address:</div>
+        <input type="text" data-bind="value: inputs.email.value, valueUpdate: 'afterkeydown'"/>
+        <div class="state" data-bind="css:{valid: inputs.name.validState}"></div>
+    </div>
+    <div class="hLine"></div>
+    <div class="inputForm">
+        <div class="label">Password:</div>
+        <input type="password" data-bind="value: inputs.password.value, valueUpdate: 'afterkeydown'"/>
+        <div class="state" data-bind="css:{valid: inputs.name.validState}"></div>
+        <div class="strengthCounter" data-bind="visible:inputs.password.focused">
+            <p class="info">
+                Duis in odio at neque fermentum laoreet. Praesent euismod pharetra lectus, eget laoreet nulla dictum id... 
+            </p>
+            <span class="passwStrength">Password strength:</span>
+            <div class="bar">
+                <div class="level level1"></div>
+                <div class="level level2"></div>
+                <div class="level level3"></div>
+            </div>
+        </div>
+    </div>
+    <div class="inputForm">
+        <div class="label">Retype password:</div>
+        <input type="password" data-bind="value: inputs.passwordCheck.value, valueUpdate: 'afterkeydown'"/>
+        <div class="state" data-bind="css:{valid: inputs.name.validState}"></div>
+    </div>
+    <div class="hLine"></div>
+    <div class="inputForm">
+        <div class="label">Date of birth:</div>
+        <input type="text" data-bind="value: inputs.birth.value, valueUpdate: 'afterkeydown'" placeholder="yyyy / mm / dd"/>
+        <div class="state" data-bind="css:{valid: inputs.name.validState}"></div>
+    </div>
+    <div class="hLine"></div>
+    <div class="inputForm">
+        <div class="label">Nationality:</div>
+        <select class="selectForm" data-bind="value: inputs.nationality.value, options: nationalities"></select>
+        <div class="state" data-bind="css:{valid: inputs.name.validState}"></div>
+    </div>
+    <div class="footer">
+        <div class="formButton" data-bind="text: sendButtonCaption, click:send, css: {active: canSend}"></div>
+    </div>
+</div>
