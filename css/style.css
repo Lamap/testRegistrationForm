@@ -49,15 +49,14 @@ body {
 	margin-top: -220px;
 	
 	background: #FFF;
-	overflow: hidden;
-	
-	-webkit-border-radius: 8px;
-	-moz-border-radius: 8px;
-	border-radius: 8px;
 	
 	-webkit-box-shadow: 0px 2px 5px 0px #DDD;
 	-moz-box-shadow:    0px 2px 5px 0px #DDD;
 	box-shadow:         0px 2px 5px 0px #DDD;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	
 }
 
 #wrapper .registration .formHeader {
@@ -68,7 +67,10 @@ body {
 	height: 40px;
 	line-height: 40px;
 	padding-left: 16px;
-
+	
+	-webkit-border-radius: 8px 8px 0px 0px;
+	-moz-border-radius: 8px 8px 0px 0px;
+	border-radius: 8px 8px 0px 0px;
 }
 #wrapper .registration .footer {
 	background: #F6F6F6;
@@ -76,7 +78,30 @@ body {
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
+	-webkit-border-radius: 0px 0px 8px 8px;
+	-moz-border-radius: 0px 0px 8px 8px;
+	border-radius: 0px 0px 8px 8px;
 }
+#wrapper .registration .footer .formButton {
+	margin: 22px auto 0px auto;
+}
+#wrapper .registration .footer .formButton.active {
+	cursor: pointer;
+}
+#wrapper .registration .inputs {
+	margin-left: 20px;
+	margin-top: 20px;
+}
+#wrapper .registration .inputs .inputForm {
+	margin-bottom: 20px;
+}
+#wrapper .registration .inputs .strengthCounter {
+	top: 118px;
+	left: 374px;
+}
+/*
+	General
+* */
 .formButton {
 	width: 168px;
 	height: 32px;
@@ -89,10 +114,62 @@ body {
 	border-radius: 4px;
 	color: #FFF;
 	background: #02afa6;
+	line-height: 30px;
 }
-#wrapper .registration .footer .formButton {
-	margin: 22px auto 0px auto;
+.inputForm {
+	width: 350px;
+	height: 30px;
+	line-height: 30px;
 }
-#wrapper .registration .footer .formButton.active {
-	cursor: pointer;
+.inputForm .label {
+	float: left;
+	line-height: 30px;
+}
+.inputForm input, .inputForm select {
+	float: right;
+	width: 168px;
+	height: 28px;
+	margin-right: 5px;
+	line-height: 30px;
+	background:  #e9e9e9;
+	border: 1px solid #b2b2b2;
+	padding-left: 10px;
+	
+	-webkit-box-shadow: inset 0px 5px 0px 0px #DDD;
+	-moz-box-shadow: inset 0px 5px 0px 0px #DDD;
+	box-shadow: inset 0px 5px 0px 0px #DDD;
+}
+.inputForm input:focus {
+	outline: none !important;
+    border: 2px solid #02afa6;
+}
+
+.inputForm .state {
+	float: right;
+	width: 24px;
+	height: 30px;
+	background: url("../assets/img/checkFalse.png") no-repeat center;
+	line-height: 30px;
+}
+.inputForm .state.valid {
+	background: url("../assets/img/checkTrue.png");
+}
+.tooltip {
+	position: absolute;
+	width: 268px;
+	height: 120px;
+	background: url("../assets/img/tooltipBg.png") no-repeat;
+	font-size: 11px;
+	line-height: normal;
+}
+.tooltip .info {
+	position: absolute;
+	width: 236px;
+	top: 10px;
+	left: 20px;
+}
+.tooltip .passwStrength {
+	position: absolute;
+	left: 20px;
+	top: 70px;
 }
