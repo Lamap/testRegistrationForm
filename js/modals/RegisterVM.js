@@ -1,7 +1,11 @@
 define(["jquery", "ko"], function($, ko) {
 	return function createRegisterVM() {
 		var SELECT_NATION_CAPTION = "Select nationality";
-		var sendButtonCaption = ko.observable("Sign up");
+		var SAVED_CAPTION = "Saved";
+		var SEND_BUTTON_CAPTION = "Sign up";
+		var sendButtonCaption = ko.observable(SEND_BUTTON_CAPTION);
+		
+		var passwordOnFocus = ko.observable(false);
 		var inputs = {
 			name: {
 				value: ko.observable(),
@@ -69,12 +73,13 @@ define(["jquery", "ko"], function($, ko) {
 		var checkPassword = ko.computed(function() {
 			var val = inputs.password.value();
 			if(!val) {
-				return false;
+				inputs.password.validState(false);
+				return 0;
 			}
 			
 			var state = 0;
 			
-			if(val.length > 2) {
+			if(val.length > 4) {
 				state = 1;
 			}
 			var hasNumbers = /\d/;
@@ -82,9 +87,9 @@ define(["jquery", "ko"], function($, ko) {
 			if(hasNumbers.test(val) && hasLowerUpper.test(val)) {
 				state = 2;
 			}
-			var hasSpecielChar = /^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]+$/g;
+			var hasSpecielChar = /[^a-zA-Z0-9]/;
 			if(hasSpecielChar.test(val) && val.length > 7) {
-				stat = 3;
+				state = 3;
 			}
 			
 			inputs.password.validState(state);		
@@ -100,7 +105,7 @@ define(["jquery", "ko"], function($, ko) {
 			inputs.passwordCheck.validState(state);		
 			return state;
 		});
-		var compareBirth = ko.computed(function() {
+		var checkBirth = ko.computed(function() {
 			var val = inputs.birth.value();
 			if(!val) {
 				return false;
@@ -112,47 +117,62 @@ define(["jquery", "ko"], function($, ko) {
 				inputs.birth.validState(false);		
 				return false;
 			}
-			var year = parts[0].parseInt(10);
-			var month = parts[1].parseInt(10);
-			var day = parts[2].parseInt(10);
+			var year = parseInt(parts[0], 10);
+			var month = parseInt(parts[1], 10);
+			var day = parseInt(parts[2], 10);
+			var thisYear = new Date().getFullYear();
 			
-			if(year < thisYear && year > 1910) {
-				state = true;
-			}
-			if(month > 0 && month < 13) {
-				state = true;
-			} else {
-				state = false;
-			}
-			
-			if(day > 0 && day < 32) {
-				state = true;
-			} else {
-				state = false;
-			}
+			state = (year < thisYear && year > 1910);		
+			state = (month > 0 && month < 13);	
+			state = (day > 0 && day < 32);
 			
 			inputs.birth.validState(state);		
 			return state;
 		});
 		var checkNation = ko.computed(function() {
+			var val = inputs.nationality.value();
 			if(!val) {
 				return false;
 			}
-			var val = inputs.nation.value();
 			var state = val !== SELECT_NATION_CAPTION;
-			inputs.nation.validState(state);		
+			inputs.nationality.validState(state);		
 			return state;
 		});
 		
 
 		
 		function send() {
-			
+			if(!canSend || sendButtonCaption() === SAVED_CAPTION) {
+				return false;
+			}
+			var data = {
+				name: inputs.name.value(),
+				email: inputs.email.value(),
+				password: inputs.password.value(),
+				birth: inputs.birth.value(),
+				nationality: inputs.nationality.value() 
+			};
+			$.ajax({
+				url: "routes/registration.php",
+				data: data,
+				type: "POST"
+			}).always(feedBackArrived);
 		}
 		
 		
 		function feedBackArrived(data) {
+			// only temp hack for local testing:
+			try {
+				data = JSON.parse(data);
+			} catch(err) {
+				
+			}
 			
+			if(!data.registrationSaved) {
+				var err = data.status;
+				return window.alert("There is some problem with saving your data: " + err + ". Please try again later.");
+			}
+			sendButtonCaption(SAVED_CAPTION);
 		}
 		
 		function init() {
@@ -166,7 +186,9 @@ define(["jquery", "ko"], function($, ko) {
 			nationalities: nationalities,
 			send: send,
 			canSend: canSend,
-			sendButtonCaption: sendButtonCaption
+			sendButtonCaption: sendButtonCaption,
+			
+			passwordOnFocus: passwordOnFocus
 		};
 	};
 });

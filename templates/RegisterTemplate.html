@@ -10,41 +10,41 @@
         </div>
         <div class="inputForm">
             <div class="label">Email address:</div>
-            <div class="state" data-bind="css:{valid: inputs.name.validState}"></div>
+            <div class="state" data-bind="css:{valid: inputs.email.validState}"></div>
             <input type="text" data-bind="value: inputs.email.value, valueUpdate: 'afterkeydown'"/>
         </div>
         <div class="hLine"></div>
         <div class="inputForm">
             <div class="label">Password:</div>
-            <div class="state" data-bind="css:{valid: inputs.name.validState}"></div>
-            <input type="password" data-bind="value: inputs.password.value, valueUpdate: 'afterkeydown'"/>
-            <div class="strengthCounter tooltip" data-bind="visible:inputs.password.focused">
+            <div class="state" data-bind="css:{valid: inputs.password.validState}"></div>
+            <input type="password" data-bind="value: inputs.password.value, valueUpdate: 'afterkeydown', hasFocus: passwordOnFocus" />
+            <div class="strengthCounter tooltip" data-bind="visible: passwordOnFocus">
                 <div class="info">
                     Duis in odio at neque fermentum laoreet. Praesent euismod pharetra lectus, eget laoreet nulla dictum id... 
                 </div>
                 <span class="passwStrength">Password strength:</span>
                 <div class="bar">
-                    <div class="level level1"></div>
-                    <div class="level level2"></div>
-                    <div class="level level3"></div>
+                    <div class="level level1" data-bind="css: {active: inputs.password.validState() > 0}"></div>
+                    <div class="level level2" data-bind="css: {active: inputs.password.validState() > 1}"></div>
+                    <div class="level level3" data-bind="css: {active: inputs.password.validState() > 2}"></div>
                 </div>
             </div>
         </div>
         <div class="inputForm">
             <div class="label">Retype password:</div>
-            <div class="state" data-bind="css:{valid: inputs.name.validState}"></div>
+            <div class="state" data-bind="css:{valid: inputs.passwordCheck.validState}"></div>
             <input type="password" data-bind="value: inputs.passwordCheck.value, valueUpdate: 'afterkeydown'"/>
         </div>
         <div class="hLine"></div>
         <div class="inputForm">
             <div class="label">Date of birth:</div>
-            <div class="state" data-bind="css:{valid: inputs.name.validState}"></div>
+            <div class="state" data-bind="css:{valid: inputs.birth.validState}"></div>
             <input type="text" data-bind="value: inputs.birth.value, valueUpdate: 'afterkeydown'" placeholder="yyyy / mm / dd"/>
         </div>
         <div class="hLine"></div>
         <div class="inputForm">
             <div class="label">Nationality:</div>
-            <div class="state" data-bind="css:{valid: inputs.name.validState}"></div>
+            <div class="state" data-bind="css:{valid: inputs.nationality.validState}"></div>
             <select class="selectForm" data-bind="value: inputs.nationality.value, options: nationalities"></select>
         </div>
     </div>
