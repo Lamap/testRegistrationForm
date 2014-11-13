@@ -181,6 +181,8 @@ body {
 	position: absolute;
 	top: 90px;
 	left: 28px;
+	height: 13px;
+	width: 100%;
 }
 .tooltip .bar .level {
 	height: 13px;
